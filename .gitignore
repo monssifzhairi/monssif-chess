@@ -1,0 +1,22 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+data/
+
+# Local development
+dev-dist/
+.aistudio/
+
+# Secrets and credentials
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Local databases and user data
+data/

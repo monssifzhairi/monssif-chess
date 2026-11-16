@@ -1,0 +1,19 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-grad" x1="32" y1="24" x2="480" y2="488" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1E3628" />
+      <stop offset="100%" stop-color="#080F0B" />
+    </linearGradient>
+    <linearGradient id="rim-grad" x1="24" y1="24" x2="488" y2="488" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.34)" />
+      <stop offset="50%" stop-color="rgba(185,215,185,0.22)" />
+      <stop offset="100%" stop-color="rgba(255,255,255,0.08)" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="116" fill="url(#bg-grad)" />
+  <rect x="8" y="8" width="496" height="496" rx="108" stroke="url(#rim-grad)" stroke-width="12" />
+  <path d="M118 384V149L182 213V384H118Z" fill="#EFECE2" />
+  <path d="M182 213L256 288L320 171L266 149L293 112L362 133L394 197L352 229L394 277V384H330V261L256 336L182 261V213Z" fill="#B9D7B9" />
+  <circle cx="336" cy="165" r="14" fill="#0A110C" />
+  <rect x="108" y="402" width="296" height="20" rx="10" fill="rgba(185, 215, 185, 0.48)" />
+</svg>

@@ -1,0 +1,6 @@
+{
+  "name": "MONSSIF CHESS",
+  "description": "Think beyond the board. A dark, strategic chess platform with Stockfish AI, local multiplayer, and real-time online rooms.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

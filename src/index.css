@@ -1,0 +1,239 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-obsidian: #070c09;
+  --color-surface: #121c16;
+  --color-elevated: #1a2820;
+  --color-forest: #203B2D;
+  --color-mint: #B9D7B9;
+  --color-ivory: #E9E5D9;
+  --color-text-main: #F4F6F0;
+  --color-text-muted: #9BA89E;
+  --color-border-hair: rgba(255, 255, 255, 0.11);
+  --color-board-dark: #4f725c;
+  --color-board-light: #dedcd0;
+  --color-danger: #E07070;
+}
+
+@layer base {
+  html,
+  body {
+    background-color: #070c09;
+    color: #F4F6F0;
+    font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Outfit", ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.025em;
+  }
+
+  button:not(:disabled),
+  a[href],
+  select:not(:disabled) {
+    cursor: pointer;
+  }
+
+  option {
+    background-color: #101914;
+    color: #F4F6F0;
+  }
+}
+
+/* Layered atmospheric lighting backdrop so frosted glass visibly refracts depth */
+.glass-ambient-bg {
+  background-color: #060b08;
+  background-image:
+    radial-gradient(940px 560px at 8% -4%, rgba(52, 138, 92, 0.42), transparent 62%),
+    radial-gradient(800px 500px at 94% 6%, rgba(185, 224, 194, 0.22), transparent 58%),
+    radial-gradient(700px 480px at 48% 46%, rgba(36, 98, 66, 0.25), transparent 68%),
+    radial-gradient(720px 440px at 82% 96%, rgba(233, 229, 217, 0.11), transparent 60%);
+}
+
+.glass-grid-overlay {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.085) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Core Frosted Glass Surface Primitives */
+.glass-surface {
+  background: linear-gradient(
+    155deg,
+    rgba(26, 43, 33, 0.56) 0%,
+    rgba(11, 19, 14, 0.50) 100%
+  );
+  backdrop-filter: blur(24px) saturate(145%);
+  -webkit-backdrop-filter: blur(24px) saturate(145%);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  box-shadow:
+    0 20px 52px rgba(0, 0, 0, 0.46),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+.glass-surface-elevated {
+  background: linear-gradient(
+    150deg,
+    rgba(33, 54, 41, 0.64) 0%,
+    rgba(13, 23, 17, 0.58) 100%
+  );
+  backdrop-filter: blur(28px) saturate(150%);
+  -webkit-backdrop-filter: blur(28px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  box-shadow:
+    0 26px 64px rgba(0, 0, 0, 0.52),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.glass-tile {
+  background: rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.glass-tile-active {
+  background: linear-gradient(
+    150deg,
+    rgba(185, 215, 185, 0.17) 0%,
+    rgba(37, 82, 58, 0.34) 100%
+  );
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(185, 215, 185, 0.48);
+  box-shadow:
+    0 10px 28px rgba(13, 35, 23, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.glass-input {
+  background: rgba(6, 11, 8, 0.52);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  color: #F4F6F0;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.glass-input:focus {
+  border-color: rgba(185, 215, 185, 0.65);
+  outline: none;
+  box-shadow:
+    0 0 0 2px rgba(185, 215, 185, 0.18),
+    inset 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.btn-glass-primary {
+  background: linear-gradient(180deg, #d7edd7 0%, #a9cfa9 100%);
+  color: #080e0a;
+  box-shadow:
+    0 10px 28px rgba(169, 207, 169, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  transition: transform 120ms ease, filter 150ms ease, box-shadow 150ms ease;
+}
+
+.btn-glass-primary:hover:not(:disabled) {
+  filter: brightness(1.05);
+  box-shadow:
+    0 12px 32px rgba(185, 215, 185, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+.btn-glass-secondary {
+  background: rgba(255, 255, 255, 0.055);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  color: #F4F6F0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: background-color 150ms ease, border-color 150ms ease, transform 120ms ease;
+}
+
+.btn-glass-secondary:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(185, 215, 185, 0.38);
+}
+
+@keyframes subtle-danger-pulse {
+  0%, 100% {
+    border-color: rgba(224, 112, 112, 0.85);
+    box-shadow:
+      0 0 24px rgba(224, 112, 112, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+  50% {
+    border-color: rgba(224, 112, 112, 0.35);
+    box-shadow:
+      0 0 10px rgba(224, 112, 112, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+}
+
+@keyframes check-ring-pulse {
+  0%, 100% {
+    box-shadow: inset 0 0 0 2px #E07070, inset 0 0 18px rgba(224, 112, 112, 0.45);
+  }
+  50% {
+    box-shadow: inset 0 0 0 3px #E07070, inset 0 0 26px rgba(224, 112, 112, 0.72);
+  }
+}
+
+@keyframes legal-pip-enter {
+  0% {
+    transform: scale(0.55);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.clock-time-trouble {
+  animation: subtle-danger-pulse 1.2s ease-in-out infinite;
+}
+
+.board-check-pulse {
+  animation: check-ring-pulse 1.4s ease-in-out infinite;
+}
+
+.board-pip-enter {
+  animation: legal-pip-enter 140ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clock-time-trouble,
+  .board-check-pulse,
+  .board-pip-enter {
+    animation: none;
+  }
+}
+
+/* Custom restrained scrollbar for move notation */
+.chess-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.chess-scroll::-webkit-scrollbar-track {
+  background: rgba(7, 12, 9, 0.4);
+}
+
+.chess-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+}
+
+.chess-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(185, 215, 185, 0.4);
+}
